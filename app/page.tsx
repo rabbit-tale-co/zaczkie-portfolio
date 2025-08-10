@@ -1,103 +1,106 @@
-import Image from "next/image";
+// import Image from "next/image";
+// import Hero from "@/components/home/hero";
+// import Gallery from "@/components/gallery";
 
-export default function Home() {
+// export default function Home() {
+//   return (
+//     <div className="font-sans flex w-full flex-col min-h-screen pt-10 pb-20 gap-16 container mx-auto ">
+//       <Hero />
+//       <Gallery />
+//     </div>
+//   );
+// }
+
+"use client"
+
+// removed unused imports
+import ProjectSlideshow from "@/components/ProjectSlideshow"
+import ServicesSection from "@/components/home/ServicesSection"
+import Stats from "@/components/home/Stats"
+import About from "@/components/home/About"
+import FAQ from "@/components/home/FAQ"
+import Pricing from "@/components/home/Pricing"
+import image_1 from "@/public/images/Obszar kompozycji 1.webp"
+import image_2 from "@/public/images/Obszar kompozycji 2.webp"
+import image_3 from "@/public/images/Obszar kompozycji 3.webp"
+import image_4 from "@/public/images/Obszar kompozycji 4.webp"
+import image_5 from "@/public/images/Obszar kompozycji 5.webp"
+
+
+export default function PhotographerPortfolio() {
+
+  const projects = [
+    {
+      id: "krolowa_ludzkich_ulic",
+      title: "KRÓLOWA ŁÓDZKICH ULIC",
+      subtitle: "Click to see more",
+      image: image_1,
+      link: "/projects/krolowa_ludzkich_ulic",
+      isSpecial: true,
+    },
+    {
+      id: "od_lodzi_sie_zaczelo",
+      title: "OD ŁODZI SIĘ ZACZĘŁO",
+      image: image_2,
+      link: "/projects/od_lodzi_sie_zaczelo",
+    },
+    {
+      id: "carskie_wybory",
+      title: "CARSKIE WYBORY",
+      image: image_3,
+      link: "/projects/carskie_wybory",
+    },
+    {
+      id: "diably_i_plonaca_skrzynia",
+      title: "DIABŁY I PŁONĄCA SKRZYNIA",
+      image: image_4,
+      link: "/projects/diably_i_plonaca_skrzynia",
+    },
+    {
+      id: "fabryka_zlota",
+      title: "FABRYKA ZŁOTA",
+      image: image_5,
+      link: "/projects/fabryka_zlota",
+    },
+  ]
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <main className="min-h-screen text-black bg-neutral-100/70">
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Hero Section */}
+      <section id="hero" className="pt-32 pb-16 px-3 sm:px-6">
+        <div className="max-w-7xl mx-auto text-center">
+          <h1 className="text-7xl sm:text-8xl md:text-9xl font-bold mb-8 leading-none">BARTOSZ ŻAK</h1>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+      </section>
+
+      {/* Stats Section */}
+      <section id="stats" className="px-3 sm:px-6 py-10 md:py-16">
+        <Stats />
+      </section>
+
+      {/* Portfolio Slideshow Section */}
+      <ProjectSlideshow projects={projects} />
+
+      {/* Services Section */}
+      <section id="services" className="px-3 py-10 md:py-16">
+        <ServicesSection />
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-10 md:py-16 px-3">
+        <About />
+      </section>
+
+      {/* Pricing Section */}
+      <section id="pricing" className="py-10 md:py-16 px-3">
+        <Pricing />
+      </section>
+
+      {/* FAQ */}
+      <section id="faq" className="py-10 md:py-16 px-3">
+        <FAQ />
+      </section>
+    </main>
+  )
 }
