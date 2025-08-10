@@ -5,8 +5,6 @@ import { translations } from "@/lib/translations";
 import { TypographyP } from "./ui/typography/p";
 import { TypographyMuted } from "./ui/typography/muted";
 import { TypographyH3 } from "./ui/typography/h3";
-// import { TypographyH2 } from "./ui/typography/h2";
-// import { TypographyH1 } from "./ui/typography/h1";
 
 const FooterLink = ({ label, href, onClick }: { label: string, href: string, onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void }) => {
   return (

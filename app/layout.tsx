@@ -6,6 +6,7 @@ import Footer from "@/components/footer";
 import { LanguageProvider } from "@/context/LanguageContext";
 import LanguageSelector from "@/components/LanguageSelector";
 import CustomCursor from "@/components/CustomCursor";
+import { Analytics } from "@vercel/analytics/next"
 
 // Metadata for different languages
 const metadataEn: Metadata = {
@@ -166,6 +167,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col select-none cursor-none`}
       >
+        <Analytics />
         <LanguageProvider>
           <div className="flex flex-col min-h-dvh">
             <Header />
