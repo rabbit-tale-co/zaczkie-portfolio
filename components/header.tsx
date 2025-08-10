@@ -13,10 +13,10 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-export const NavItem = ({ label, href, className = "text-lg" }: { label: string, href: string, className?: string }) => {
+export const NavItem = ({ label, href, className = "text-lg", onClick }: { label: string, href: string, className?: string, onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void }) => {
   return (
     <li>
-      <Link href={href} className={`flex items-center gap-3 group ${className}`}>
+      <Link href={href} onClick={onClick} className={`flex items-center gap-3 group ${className}`}>
         <div className="text-primary group-hover:translate-x-1.5 transition-all duration-150">
           <p>[</p>
         </div>
@@ -34,6 +34,19 @@ export default function Header() {
   const data = translations[language];
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const handleSmoothScroll = (href: string, closeMenu?: boolean) => (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      if (closeMenu) setMenuOpen(false);
+      const el = document.querySelector(href) as HTMLElement | null;
+      if (el) {
+        const headerOffset = 80; // approximate sticky header height
+        const y = el.getBoundingClientRect().top + window.scrollY - headerOffset;
+        window.scrollTo({ top: Math.max(y, 0), behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <header className="p-4 sticky top-0 z-50 bg-background/90 backdrop-blur-sm">
       <div className="container mx-auto flex justify-between items-center">
@@ -45,7 +58,7 @@ export default function Header() {
         <nav className="hidden lg:block">
           <ul className="flex items-center gap-8">
             {data.header.navItems.map((item) => (
-              <NavItem key={item.href} label={item.label} href={item.href} />
+              <NavItem key={item.href} label={item.label} href={item.href} onClick={handleSmoothScroll(item.href)} />
             ))}
           </ul>
         </nav>
@@ -70,7 +83,7 @@ export default function Header() {
               <ul className="flex flex-col gap-4 ml-5">
                 {data.header.navItems.map((item) => (
                   <li key={`s-${item.href}`}>
-                    <Link href={item.href} onClick={() => setMenuOpen(false)} className="text-lg">
+                    <Link href={item.href} onClick={handleSmoothScroll(item.href, true)} className="text-lg">
                       {item.label}
                     </Link>
                   </li>

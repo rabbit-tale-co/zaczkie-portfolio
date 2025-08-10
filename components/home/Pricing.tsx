@@ -8,6 +8,7 @@ import SectionTitle from './SectionTitle'
 import { TypographyP } from '../ui/typography/p'
 import PricingTable from './pricing/PricingTable'
 import PricingNotes from './pricing/PricingNotes'
+import { Button } from '../ui/button'
 
 export default function Pricing() {
   const { language } = useLanguage()
@@ -24,15 +25,16 @@ export default function Pricing() {
       />
 
       {/* Tabs / category nav */}
-      <div className="flex gap-2 overflow-auto pb-2 px-1">
+      <div className="flex gap-2 overflow-auto pb-2 p-1">
         {data.pricing.types.map((t) => (
-          <button
+          <Button
             key={t.id}
+            variant={activeId === t.id ? "default" : "outline"}
             onClick={() => setActiveId(t.id)}
-            className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border text-xs sm:text-sm whitespace-nowrap ${activeId === t.id ? 'bg-neutral-900 text-white border-neutral-900' : 'bg-white hover:bg-neutral-50'}`}
+            className={`${activeId === t.id ? 'text-white' : 'text-neutral-600'}`}
           >
             {t.title}
-          </button>
+          </Button>
         ))}
       </div>
 

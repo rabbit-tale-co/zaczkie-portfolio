@@ -51,7 +51,7 @@ export interface TranslationData {
         rows: { label: string; values: string[] }[]
       }
       notes?: string[]
-      packages?: {
+      packages: {
         name: string
         price: string
         features: string[]

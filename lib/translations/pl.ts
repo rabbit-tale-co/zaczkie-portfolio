@@ -80,24 +80,24 @@ export const pl: TranslationData = {
             { label: "Comic", values: ["15$", "20$", "+5$"] }
           ]
         },
-        // packages: [
-        //   {
-        //     name: "Basic",
-        //     price: "300 PLN",
-        //     features: [
-        //       "Szkic + kolor",
-        //       "Proste tlo"
-        //     ]
-        //   },
-        //   {
-        //     name: "Pro",
-        //     price: "600 PLN",
-        //     features: [
-        //       "Cieniowanie renderowane",
-        //       "Detalicze tlo"
-        //     ]
-        //   }
-        // ]
+        packages: [
+          {
+            name: "Basic",
+            price: "300 PLN",
+            features: [
+              "Szkic + kolor",
+              "Proste tlo"
+            ]
+          },
+          {
+            name: "Pro",
+            price: "600 PLN",
+            features: [
+              "Cieniowanie renderowane",
+              "Detalicze tlo"
+            ]
+          }
+        ]
       },
       {
         id: "halfbody",
@@ -118,24 +118,24 @@ export const pl: TranslationData = {
           "+50% za dodatkowa postac",
           "Dodatkowe elementy (skrzydla itd.) +5$"
         ],
-        // packages: [
-        //   {
-        //     name: "Basic",
-        //     price: "450 PLN",
-        //     features: [
-        //       "Szkic + kolor",
-        //       "Proste tlo"
-        //     ]
-        //   },
-        //   {
-        //     name: "Pro",
-        //     price: "800 PLN",
-        //     features: [
-        //       "Cieniowanie renderowane",
-        //       "Detalicze tlo"
-        //     ]
-        //   }
-        // ]
+        packages: [
+          {
+            name: "Basic",
+            price: "450 PLN",
+            features: [
+              "Szkic + kolor",
+              "Proste tlo"
+            ]
+          },
+          {
+            name: "Pro",
+            price: "800 PLN",
+            features: [
+              "Cieniowanie renderowane",
+              "Detalicze tlo"
+            ]
+          }
+        ]
       },
       {
         id: "fullbody",
@@ -156,24 +156,24 @@ export const pl: TranslationData = {
           "+50% za dodatkowa postac",
           "Dodatkowe elementy (skrzydla itd.) +5$"
         ],
-        // packages: [
-        //   {
-        //     name: "Basic",
-        //     price: "700 PLN",
-        //     features: [
-        //       "Szkic + kolor",
-        //       "Proste tlo"
-        //     ]
-        //   },
-        //   {
-        //     name: "Pro",
-        //     price: "1200 PLN",
-        //     features: [
-        //       "Cieniowanie renderowane",
-        //       "Detalicze tlo"
-        //     ]
-        //   }
-        // ]
+        packages: [
+          {
+            name: "Basic",
+            price: "700 PLN",
+            features: [
+              "Szkic + kolor",
+              "Proste tlo"
+            ]
+          },
+          {
+            name: "Pro",
+            price: "1200 PLN",
+            features: [
+              "Cieniowanie renderowane",
+              "Detalicze tlo"
+            ]
+          }
+        ]
       },
       {
         id: "badge",
@@ -190,10 +190,10 @@ export const pl: TranslationData = {
           ]
         },
         notes: ["+ koszty druku i wysylki"],
-        // packages: [
-        //   { name: "Naklejka", price: "200 PLN", features: ["PNG do druku", "Obrys + cieniowanie"] },
-        //   { name: "Laminat", price: "280 PLN", features: ["Sciezka ciecia", "CMYK PDF"] }
-        // ]
+        packages: [
+          { name: "Naklejka", price: "200 PLN", features: ["PNG do druku", "Obrys + cieniowanie"] },
+          { name: "Laminat", price: "280 PLN", features: ["Sciezka ciecia", "CMYK PDF"] }
+        ]
       },
       {
         id: "credit-card",
@@ -208,9 +208,9 @@ export const pl: TranslationData = {
             { label: "Comic", values: ["20$", "25$"] }
           ]
         },
-        // packages: [
-        //   { name: "Pojedyncza", price: "260 PLN", features: ["Dedykowany projekt", "Gotowe do druku"] }
-        // ]
+        packages: [
+          { name: "Pojedyncza", price: "260 PLN", features: ["Dedykowany projekt", "Gotowe do druku"] }
+        ]
       },
       {
         id: "neon-logo",
@@ -226,10 +226,10 @@ export const pl: TranslationData = {
             { label: "Comic", values: ["15$", "25$"] }
           ]
         },
-        // packages: [
-        //   { name: "Avatar", price: "180 PLN", features: ["500x500 PNG", "2 warianty kolor."] },
-        //   { name: "Header", price: "350 PLN", features: ["3000px szer.", "SVG + PNG"] }
-        // ]
+        packages: [
+          { name: "Avatar", price: "180 PLN", features: ["500x500 PNG", "2 warianty kolor."] },
+          { name: "Header", price: "350 PLN", features: ["3000px szer.", "SVG + PNG"] }
+        ]
       },
       {
         id: "pixel-art",
@@ -246,11 +246,11 @@ export const pl: TranslationData = {
             { label: "Comic", values: ["12$", "22$"] }
           ]
         },
-        // packages: [
-        //   { name: "Head", price: "120 PLN", features: ["min. 64x64", "PNG"] },
-        //   { name: "Halfbody", price: "200 PLN", features: ["min. 128x128", "PNG"] },
-        //   { name: "Fullbody", price: "300 PLN", features: ["min. 256x256", "PNG"] }
-        // ]
+        packages: [
+          { name: "Head", price: "120 PLN", features: ["min. 64x64", "PNG"] },
+          { name: "Halfbody", price: "200 PLN", features: ["min. 128x128", "PNG"] },
+          { name: "Fullbody", price: "300 PLN", features: ["min. 256x256", "PNG"] }
+        ]
       },
       {
         id: "refsheet",
@@ -263,13 +263,13 @@ export const pl: TranslationData = {
         notes: [
           "Referencje wyceniane indywidualnie.",
         ],
-        // packages: [
-        //   {
-        //     name: "Pakiet startowy (2x FullBody, Head)",
-        //     price: "45$",
-        //     features: []
-        //   }
-        // ]
+        packages: [
+          {
+            name: "Pakiet startowy (2x FullBody, Head)",
+            price: "45$",
+            features: []
+          }
+        ]
       }
     ],
     note: "Masz inne potrzeby? Napisz po wycene indywidualna."
@@ -325,7 +325,7 @@ export const pl: TranslationData = {
     ],
     callToAction: {
       subtitle: "Twoja marka zasługuje na lepsze.",
-      title: "Zbudujmy to razem."
+      title: "Zbudujmy to dobrze."
     },
     contact: {
       email: {
@@ -343,6 +343,7 @@ export const pl: TranslationData = {
       { label: "Strona główna", href: "/" },
       { label: "Usługi", href: "#services" },
       { label: "O mnie", href: "#about" },
+      { label: "Cennik", href: "#pricing" },
       { label: "FAQ", href: "#faq" }
     ],
     cta: "Napisz do mnie"

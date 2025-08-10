@@ -8,9 +8,9 @@ import { TypographyH3 } from "./ui/typography/h3";
 // import { TypographyH2 } from "./ui/typography/h2";
 // import { TypographyH1 } from "./ui/typography/h1";
 
-const FooterLink = ({ label, href }: { label: string, href: string }) => {
+const FooterLink = ({ label, href, onClick }: { label: string, href: string, onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void }) => {
   return (
-    <Link href={href} className="flex items-center gap-1 group text-sm transition-colors">
+    <Link href={href} onClick={onClick} className="flex items-center gap-1 group text-sm transition-colors">
       <div className="group-hover:translate-x-0.5 transition-all duration-150">
         <TypographyP>[</TypographyP>
       </div>
@@ -27,15 +27,28 @@ export default function Footer() {
   const { language } = useLanguage();
   const data = translations[language];
 
+  const handleSmooth = (href: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const el = document.querySelector(href) as HTMLElement | null;
+      if (el) {
+        const headerEl = document.querySelector('header') as HTMLElement | null;
+        const headerOffset = headerEl?.getBoundingClientRect().height ?? 80;
+        const y = el.getBoundingClientRect().top + window.scrollY - headerOffset;
+        window.scrollTo({ top: Math.max(y, 0), behavior: 'smooth' });
+      }
+    }
+  }
+
   return (
     <footer className="px-3 pb-3">
       <div className="bg-black text-white rounded-2xl">
         <div className="container mx-auto px-6 sm:px-8 py-10 sm:py-12">
           {/* Top Navigation/Social Links */}
-          <div className="flex flex-col gap-7 mb-8 md:grid md:grid-cols-2 md:gap-8 lg:flex lg:flex-row lg:justify-between lg:items-center lg:gap-0">
+          <div className="flex flex-col gap-7 md:grid md:grid-cols-2 md:gap-8 lg:flex lg:flex-row lg:justify-between lg:items-center lg:gap-0">
             <div className="flex flex-col items-start gap-3 md:gap-4 lg:flex-row lg:flex-wrap lg:items-center lg:justify-start lg:gap-5">
               {data.footer.navItems.map((item, index) => (
-                <FooterLink key={`nav-${index}`} label={item.label} href={item.href} />
+                <FooterLink key={`nav-${index}`} label={item.label} href={item.href} onClick={handleSmooth(item.href)} />
               ))}
             </div>
             <div className="flex flex-col items-start gap-3 md:gap-4 lg:flex-row lg:flex-wrap lg:items-center lg:justify-start lg:gap-5">
@@ -46,7 +59,7 @@ export default function Footer() {
           </div>
 
           {/* Central Call to Action */}
-          <div className="text-center mb-10 sm:mb-12 px-1">
+          <div className="text-center my-10 sm:my-12 px-1">
             <TypographyMuted className="mb-2">{data.footer.callToAction.subtitle}</TypographyMuted>
             <TypographyH3 className="text-white font-bold">{data.footer.callToAction.title}</TypographyH3>
           </div>
@@ -79,7 +92,7 @@ export default function Footer() {
             {/* Row 2: Legal links */}
             <div className="flex flex-wrap gap-5 justify-center">
               {data.footer.legalItems.map((item, index) => (
-                <FooterLink key={`legal-${index}`} label={item.label} href={item.href} />
+                <FooterLink key={`legal-${index}`} label={item.label} href={item.href} onClick={handleSmooth(item.href)} />
               ))}
             </div>
           </div>

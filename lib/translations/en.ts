@@ -338,11 +338,11 @@ export const en: TranslationData = {
       copyright: "All rights reserved."
     },
     navItems: [
-      { label: "Projects", href: "/projects" },
-      { label: "Services", href: "/services" },
-      { label: "About", href: "/about" },
-      { label: "Pricing", href: "/pricing" },
-      { label: "FAQ", href: "/faq" }
+      { label: "Home", href: "/" },
+      { label: "Services", href: "#services" },
+      { label: "About", href: "#about" },
+      { label: "Pricing", href: "#pricing" },
+      { label: "FAQ", href: "#faq" }
     ],
     socialItems: [
       { label: "Telegram", href: "https://t.me/zaczkiearts" },
@@ -373,9 +373,10 @@ export const en: TranslationData = {
   header: {
     navItems: [
       { label: "Home", href: "/" },
-      { label: "About", href: "/about" },
-      { label: "Contact", href: "/contact" },
-      { label: "Projects", href: "/projects" }
+      { label: "Services", href: "#services" },
+      { label: "About me", href: "#about" },
+      { label: "Pricing", href: "#pricing" },
+      { label: "FAQ", href: "#faq" }
     ],
     cta: "Get in touch"
   }
