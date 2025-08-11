@@ -302,7 +302,7 @@ export const pl: TranslationData = {
   },
   footer: {
     company: {
-      label: "Rabbit Tale Studio .co",
+      label: "Rabbit Tale Studio",
       copyright: "Wszystkie prawa zastrzeżone."
     },
     navItems: [

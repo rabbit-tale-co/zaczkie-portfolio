@@ -12,17 +12,18 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { TypographyP } from "./ui/typography/p";
 
 export const NavItem = ({ label, href, className = "text-lg", onClick }: { label: string, href: string, className?: string, onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void }) => {
   return (
     <li>
-      <Link href={href} onClick={onClick} className={`flex items-center gap-3 group ${className}`}>
-        <div className="text-primary group-hover:translate-x-1.5 transition-all duration-150">
-          <p>[</p>
+      <Link href={href} onClick={onClick} className={`flex items-center gap-2 group ${className}`}>
+        <div className="text-primary group-hover:translate-x-1 transition-transform duration-150">
+          <TypographyP>[</TypographyP>
         </div>
         {label}
-        <div className="text-primary group-hover:-translate-x-1.5 transition-all duration-150">
-          <p>]</p>
+        <div className="text-primary group-hover:-translate-x-1 transition-transform duration-150">
+          <TypographyP>]</TypographyP>
         </div>
       </Link>
     </li>
@@ -56,7 +57,7 @@ export default function Header() {
 
         {/* Desktop navigation (lg+) */}
         <nav className="hidden lg:block">
-          <ul className="flex items-center gap-8">
+          <ul className="flex items-center gap-4">
             {data.header.navItems.map((item) => (
               <NavItem key={item.href} label={item.label} href={item.href} onClick={handleSmoothScroll(item.href)} />
             ))}

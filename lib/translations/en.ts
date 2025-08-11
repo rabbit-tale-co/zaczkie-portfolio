@@ -334,7 +334,7 @@ export const en: TranslationData = {
   },
   footer: {
     company: {
-      label: "Rabbit Tale Studio .co",
+      label: "Rabbit Tale Studio",
       copyright: "All rights reserved."
     },
     navItems: [
