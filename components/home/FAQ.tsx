@@ -11,6 +11,7 @@ import { translations } from "@/lib/translations";
 import SectionTitle from "./SectionTitle";
 import { TypographyLead } from "../ui/typography/lead";
 import { TypographyP } from "../ui/typography/p";
+import { motion } from "framer-motion";
 
 export default function FaqLr() {
   const { language } = useLanguage();
@@ -22,31 +23,40 @@ export default function FaqLr() {
       <SectionTitle title={data.faq.title} index={5} sectionTitle={data.faq.title} subtitle={data.faq.subtitle} />
 
       {/* RIGHT: accordion list */}
-      <div>
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10% 0px" }}
+        transition={{ type: "spring", stiffness: 320, damping: 26 }}
+      >
         <Accordion
           type="single"
           collapsible
           className="grid gap-3 sm:gap-4"
         >
           {data.faq.items.map((f, i) => (
-            <AccordionItem
+            <motion.div
               key={i}
-              value={`item-${i}`}
-              className="rounded-2xl bg-white border-none"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.04, type: "spring", stiffness: 300, damping: 24 }}
             >
-              {/* Hide shadcn's default chevron, add our Plus that rotates to X */}
-              <AccordionTrigger className="px-4 md:px-8 py-5 text-left text-base md:text-lg font-medium hover:no-underline cursor-pointer">
-                <TypographyLead>{f.question}</TypographyLead>
-              </AccordionTrigger>
-              <AccordionContent className="px-4 md:px-8 pb-5">
-                <TypographyP>
-                  {f.answer}
-                </TypographyP>
-              </AccordionContent>
-            </AccordionItem>
+              <AccordionItem value={`item-${i}`} className="rounded-2xl bg-white border-none">
+                {/* Hide shadcn's default chevron, add our Plus that rotates to X */}
+                <AccordionTrigger className="px-4 md:px-8 py-5 text-left text-base md:text-lg font-medium hover:no-underline cursor-pointer">
+                  <TypographyLead>{f.question}</TypographyLead>
+                </AccordionTrigger>
+                <AccordionContent className="px-4 md:px-8 pb-5">
+                  <TypographyP>
+                    {f.answer}
+                  </TypographyP>
+                </AccordionContent>
+              </AccordionItem>
+            </motion.div>
           ))}
         </Accordion>
-      </div>
+      </motion.div>
     </div>
 
   );

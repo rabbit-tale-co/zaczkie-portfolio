@@ -1,68 +1,58 @@
 'use client'
 import { useLanguage } from "@/hooks/useLanguage"
+import { Button } from "./ui/button"
 
 interface LanguageSelectorProps {
   className?: string
-  size?: 'sm' | 'md' | 'lg'
   variant?: 'default' | 'floating'
 }
 
-export default function LanguageSelector({ className = "", size = 'md', variant = 'default' }: LanguageSelectorProps) {
+export default function LanguageSelector({ className = "", variant = 'default' }: LanguageSelectorProps) {
   const { language, changeLanguage } = useLanguage()
-
-  const sizeClasses = {
-    sm: 'px-2 py-1 text-xs',
-    md: 'px-3 py-1.5 text-sm',
-    lg: 'px-4 py-2 text-base'
-  }
 
   if (variant === 'floating') {
     return (
       <div className={`fixed bottom-6 right-6 z-50 ${className}`}>
-        <div className="flex bg-black/80 backdrop-blur-sm rounded-full p-1 shadow-lg border border-white/10">
-          <button
+        <div className="flex gap-1 bg-black/80 backdrop-blur-sm rounded-full p-1 shadow-lg border border-white/10">
+          <Button
+            variant={language === 'pl' ? 'light' : 'ghost'}
+            size={'icon'}
             onClick={() => changeLanguage('pl')}
-            className={`rounded-full transition-all duration-200 ${sizeClasses[size]} ${language === 'pl'
-              ? 'bg-white text-black shadow-md'
-              : 'text-gray-300 hover:text-white hover:bg-white/10'
-              }`}
+            className={language !== 'pl' ? 'text-white' : ''}
           >
             PL
-          </button>
-          <button
+          </Button>
+          <Button
+            variant={language === 'en' ? 'light' : 'ghost'}
+            size={'icon'}
             onClick={() => changeLanguage('en')}
-            className={`rounded-full transition-all duration-200 ${sizeClasses[size]} ${language === 'en'
-              ? 'bg-white text-black shadow-md'
-              : 'text-gray-300 hover:text-white hover:bg-white/10'
-              }`}
+            className={language !== 'en' ? 'text-white' : ''}
           >
             EN
-          </button>
+          </Button>
         </div>
       </div>
     )
   }
 
   return (
-    <div className={`flex bg-gray-800 rounded-lg p-1 ${className}`}>
-      <button
+    <div className={`flex gap-1 bg-gray-800 rounded-lg p-1 ${className}`}>
+      <Button
         onClick={() => changeLanguage('pl')}
-        className={`rounded-md transition-colors ${sizeClasses[size]} ${language === 'pl'
-          ? 'bg-white text-black'
-          : 'text-gray-300 hover:text-white'
-          }`}
+        variant={language === 'pl' ? 'light' : 'ghost'}
+        size={'icon'}
+        className={language !== 'pl' ? 'text-white' : ''}
       >
         PL
-      </button>
-      <button
+      </Button>
+      <Button
         onClick={() => changeLanguage('en')}
-        className={`rounded-md transition-colors ${sizeClasses[size]} ${language === 'en'
-          ? 'bg-white text-black'
-          : 'text-gray-300 hover:text-white'
-          }`}
+        variant={language === 'en' ? 'light' : 'ghost'}
+        size={'icon'}
+        className={language !== 'en' ? 'text-white' : ''}
       >
         EN
-      </button>
+      </Button>
     </div>
   )
 }

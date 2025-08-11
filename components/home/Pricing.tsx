@@ -9,6 +9,7 @@ import { TypographyP } from '../ui/typography/p'
 import PricingTable from './pricing/PricingTable'
 import PricingNotes from './pricing/PricingNotes'
 import { Button } from '../ui/button'
+import { motion } from 'framer-motion'
 
 export default function Pricing() {
   const { language } = useLanguage()
@@ -25,21 +26,22 @@ export default function Pricing() {
       />
 
       {/* Tabs / category nav */}
-      <div className="flex gap-2 overflow-auto pb-2 p-1">
+      <motion.div className="flex gap-2 overflow-auto pb-2 p-1" initial="hidden" whileInView="show" viewport={{ once: true }} variants={{ hidden: {}, show: { transition: { staggerChildren: 0.04 } } }}>
         {data.pricing.types.map((t) => (
-          <Button
-            key={t.id}
-            variant={activeId === t.id ? "default" : "outline"}
-            onClick={() => setActiveId(t.id)}
-            className={`${activeId === t.id ? 'text-white' : 'text-neutral-600'}`}
-          >
-            {t.title}
-          </Button>
+          <motion.div key={t.id} variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}>
+            <Button
+              variant={activeId === t.id ? "default" : "outline"}
+              onClick={() => setActiveId(t.id)}
+              className={`${activeId === t.id ? 'text-white' : 'text-neutral-600'}`}
+            >
+              {t.title}
+            </Button>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
       {/* Active category */}
-      <div className="rounded-3xl bg-white overflow-hidden mt-4">
+      <motion.div className="rounded-3xl bg-white overflow-hidden mt-4" initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ type: 'spring', stiffness: 320, damping: 28 }}>
         <div className="grid md:grid-cols-[360px_1fr]">
           <div className="h-44 sm:h-56 md:h-full p-2 sm:p-3">
             <div className="relative w-full h-full rounded-xl overflow-hidden">
@@ -57,34 +59,42 @@ export default function Pricing() {
 
             {/* Samples grid */}
             {active.samples && active.samples.length > 0 && (
-              <div className="grid grid-cols-3 gap-2 mb-3">
+              <motion.div className="grid grid-cols-3 gap-2 mb-3" initial="hidden" whileInView="show" viewport={{ once: true }} variants={{ hidden: {}, show: { transition: { staggerChildren: 0.03 } } }}>
                 {active.samples.map((s, i) => (
-                  <div key={i} className="relative aspect-square rounded-xl overflow-hidden">
+                  <motion.div key={i} className="relative aspect-square rounded-xl overflow-hidden" variants={{ hidden: { opacity: 0, scale: 0.96 }, show: { opacity: 1, scale: 1 } }}>
                     <Image src={s} alt={`${active.title} sample ${i + 1}`} fill className="object-cover" sizes="(max-width:768px) 33vw, 180px" />
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             )}
 
             {/* Table or notes */}
             {active.matrix ? (
-              <PricingTable
-                columns={[data.pricing.labels?.style ?? 'Style', ...active.matrix.columns]}
-                rows={active.matrix.rows.map(r => [r.label, ...r.values])}
-                notes={active.notes}
-              />
+              <div className="rounded-2xl border">
+
+                <PricingTable
+                  columns={[data.pricing.labels?.style ?? 'Style', ...active.matrix.columns]}
+                  rows={active.matrix.rows.map(r => [r.label, ...r.values])}
+                  notes={active.notes}
+                />
+
+              </div>
             ) : active.packages && active.packages.length > 0 ? (
-              <PricingTable
-                columns={[data.pricing.labels?.package ?? 'Package', data.pricing.labels?.price ?? 'Price']}
-                rows={active.packages.map(p => [p.name, p.price])}
-                notes={active.notes}
-              />
+              <div className="rounded-2xl border">
+                <div className="p-2 sm:p-3">
+                  <PricingTable
+                    columns={[data.pricing.labels?.package ?? 'Package', data.pricing.labels?.price ?? 'Price']}
+                    rows={active.packages.map(p => [p.name, p.price])}
+                    notes={active.notes}
+                  />
+                </div>
+              </div>
             ) : (
               <PricingNotes notes={active.notes} />
             )}
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {data.pricing.note && (
         <TypographyP className="text-center text-neutral-600 mt-6">{data.pricing.note}</TypographyP>
