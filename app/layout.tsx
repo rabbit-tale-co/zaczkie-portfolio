@@ -174,7 +174,7 @@ export default function RootLayout({
             {children}
             <Footer />
           </div>
-          <LanguageSelector variant="floating" size="md" />
+          <LanguageSelector variant="floating" />
           <CustomCursor />
         </LanguageProvider>
       </body>
